@@ -1,17 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExcelReportService {
 
-  constructor(private http:HttpClient) { }
+  private baseURL: string = `${environment.apiUrl}/excel`;
 
-  baseURL:string='/excel';
+  constructor(private http: HttpClient) { }
 
-  public downloadReport(){
+  public downloadReport(): Observable<Blob> {
     return this.http.get(this.baseURL, {
       responseType: 'blob'
     });

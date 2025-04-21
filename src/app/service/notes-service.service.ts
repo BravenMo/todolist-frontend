@@ -2,27 +2,27 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Note } from '../interface/note';
-import { NoPreloading } from '@angular/router';
+import { environment } from '../../environments/environment.prod';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotesServiceService {
 
-  // apiUrl:string = 'http://localhost:5000/notes/1';
-  apiUrl:string = '/note';
+  private apiUrl: string = `${environment.apiUrl}/note`;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public getNotes():Observable<Note>{
+  public getNotes(): Observable<Note> {
     return this.http.get<Note>(this.apiUrl);
   }
-  
-  public updateNote(note:Note):Observable<Note>{
-    return this.http.put<Note>(this.apiUrl,note);
+
+  public updateNote(note: Note): Observable<Note> {
+    return this.http.put<Note>(this.apiUrl, note);
   }
 
-  deleteAll():Observable<void>{
+  public deleteAll(): Observable<void> {
     return this.http.delete<void>(this.apiUrl);
   }
 }
