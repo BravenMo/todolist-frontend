@@ -1,0 +1,24 @@
+<div class="border rounded p-3" style="background-color: #E6E6E6;">
+    <h2 class="fw-bold">Goals of the Week</h2>
+    <ul class="list-group">
+      <li *ngFor="let item of items" class="list-group-item d-flex align-items-center">
+        <input type="checkbox" #checkBox class="me-2" [checked]="item.completed"  (change)="clicked(checkBox.checked,item.id,item)" >
+        <span class="fw-bold">{{ item.goalName }}</span>
+        <button class="btn btn-close ms-auto" style="filter: invert(25%) sepia(100%) saturate(4000%) hue-rotate(340deg);" (click)="deleteGoal(item)"></button>
+      </li>
+    </ul>
+    <button class="btn btn-outline-dark mt-3" (click)="clickedAddGoal()">Add a new goal</button>
+    <div class="mt-3 ms-1">
+        <div *ngIf="addGoalSelected">
+            <form name="inputGoal">
+                <input class="input-group-text" type="text" name="goalName" [(ngModel)]="goalName" placeholder="What is your goal?">
+                <p *ngIf="showError" class="text-danger">Please enter a goal</p>
+                <div class="mt-3">
+                    <button class="btn btn-outline-success me-3" (click)="addedGoal()">Add goal</button>
+                    <button class="btn btn-outline-danger" (click)="goBack()">Go back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+  

@@ -1,0 +1,44 @@
+<div class="border rounded p-3" style="background-color: #E6E6E6;">
+    <h3 class="fw-bold">Habit Tracker</h3>
+
+    <div class="row fw-bold text-center">
+        <div class="col-3"></div>
+        <div class="col">M</div>
+        <div class="col">T</div>
+        <div class="col">W</div>
+        <div class="col">T</div>
+        <div class="col">F</div>
+        <div class="col">S</div>
+        <div class="col">S</div>
+        <div class="col">Delete</div>
+    </div>
+
+    <hr>
+
+    <div *ngFor="let habit of habits" class="row align-items-center border-bottom py-2">
+        <div class="col-3 fw-bold">{{ habit.habitName }}</div> 
+        <div class="col text-center"><input type="checkbox" #monday class="form-check-input" (change)="mondayChanged(habit.id,monday.checked,habit)" [checked]="habit.mondayCompleted"></div>
+        <div class="col text-center"><input type="checkbox" #tuesday class="form-check-input" (change)="tuesdayChanged(habit.id,tuesday.checked,habit)" [checked]="habit.tuesdayCompleted"></div>
+        <div class="col text-center"><input type="checkbox" #wednesday class="form-check-input" (change)="wednesdayChanged(habit.id,wednesday.checked,habit)" [checked]="habit.wednesdayCompleted"></div>
+        <div class="col text-center"><input type="checkbox" #thursday class="form-check-input" (change)="thursdayChanged(habit.id,thursday.checked,habit)" [checked]="habit.thursdayCompleted"></div>
+        <div class="col text-center"><input type="checkbox" #friday class="form-check-input" (change)="fridayChanged(habit.id,friday.checked,habit)" [checked]="habit.fridayCompleted"></div>
+        <div class="col text-center"><input type="checkbox" #saturday class="form-check-input" (change)="saturdayChanged(habit.id,saturday.checked,habit)" [checked]="habit.saturdayCompleted"></div>
+        <div class="col text-center"><input type="checkbox" #sunday class="form-check-input" (change)="sundayChanged(habit.id,sunday.checked,habit)" [checked]="habit.sundayCompleted"></div>
+        <div class="col text-center"><button class="btn btn-close ms-auto" style="filter: invert(25%) sepia(100%) saturate(4000%) hue-rotate(340deg);" (click)="deleteHabit(habit)"></button></div>
+    </div>
+
+    <button class="btn btn-outline-dark mt-3" (click)="addHabit()">Add a new habit</button>
+    <div class="mt-3 ms-1">
+        <div *ngIf="addHabitSelected">
+            <form name="inputHabit">
+                <input class="input-group-text" type="text" name="habitName" [(ngModel)]="habitName" placeholder="Enter a new habit">
+                <p *ngIf="showError" class="text-danger">Please enter a habit</p>
+                <div class="mt-3">
+                    <button class="btn btn-outline-success me-3" (click)="addedHabit()">Add a habit</button>
+                    <button class="btn btn-outline-danger" (click)="goBack()">Go back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

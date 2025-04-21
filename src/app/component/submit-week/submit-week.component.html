@@ -1,0 +1,59 @@
+<div class="main-container" style="display: flex; justify-content: center; align-items: center; height: 100vh; ">
+    <div class="main-content border rounded" style="background-color: #D9DF1D; padding:30px;">
+        <div class="title-text">
+            <h1 class="card-header" style="align-self: center;">Your weekly progress: </h1>
+        </div>
+        <br/>
+        <div class="progress" style="align-self: center;">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progressValue" [attr.aria-valuenow]="progressValue"aria-valuemin="0" aria-valuemax="100">{{progressValue}}%</div>
+        </div>
+        <ol class="list-group list-group-numbered" style="padding-top: 20px;">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Goals completed:</div>
+                @if(goalsMissedBoolean){
+                      Goals Missed this week were:
+                      <br/>
+                      {{goalsMissed}}
+                }
+                @else {
+                  <span>You did not miss any goals this week.</span>
+                }
+              </div>
+              <span class="badge bg-primary rounded-pill">{{numberOfGoalsCompleted}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Habits Completed:</div>
+                @if (habitsMissedBoolean){
+                      Habits Missed this week were:
+                      <br/>
+                      <span *ngFor="let habit of habitsMissed">
+                        {{habit}}
+                        <br/>
+                      </span>
+                }
+                @else {
+                  <span>You did not miss any habits this week.</span>
+                }
+              </div>
+              <span class="badge bg-primary rounded-pill">{{numberOfHabitsCompleted}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Notes:</div>
+                     Your note this week:
+                     <br/>
+                     {{note.content}} 
+              </div>
+            </li>
+        </ol>
+        <div class="buttons" style="display: flex;">
+            <button class="btn btn-success" style="padding: 10px; margin-top: 15px;" (click)="downloadReport()">Download Report</button>
+            <button class="btn btn-primary" style="padding: 10px; margin-top: 15px; margin-left: auto;" (click)="clearAndMove()">Next week</button>
+        </div>
+        <div class="message" style="padding-top: 10px;">
+            <span style="color: red;">We reccomend to download the report, as data will be erased on moving to next week.</span>
+        </div>
+    </div>
+</div>
