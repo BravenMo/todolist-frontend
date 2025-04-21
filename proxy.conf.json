@@ -1,31 +1,31 @@
 {
     "/items": {
-      "target": "http://localhost:8080",
+      "target": "https://todolist-backend-production-c691.up.railway.app",
       "secure": false,
       "changeOrigin": true
     },
     "/habits":{
-      "target": "http://localhost:8080",
+      "target": "https://todolist-backend-production-c691.up.railway.app",
       "secure": false,
       "changeOrigin": true
     },
     "/note":{
-      "target": "http://localhost:8080",
+      "target": "https://todolist-backend-production-c691.up.railway.app",
       "secure": false,
       "changeOrigin": true
     },
     "/date":{
-      "target": "http://localhost:8080",
+      "target": "https://todolist-backend-production-c691.up.railway.app",
       "secure": false,
       "changeOrigin": true
     },
     "/excel":{
-      "target": "http://localhost:8080",
+      "target": "https://todolist-backend-production-c691.up.railway.app",
       "secure": false,
       "changeOrigin": true
     },
     "/progress":{
-      "target": "http://localhost:8080",
+      "target": "https://todolist-backend-production-c691.up.railway.app",
       "secure": false,
       "changeOrigin": true
     }
